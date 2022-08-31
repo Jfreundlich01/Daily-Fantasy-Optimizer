@@ -6,7 +6,7 @@ import re
 wb = openpyxl.Workbook()
 ws = wb.active
 
-players = pd.read_csv(r"/Users/jordan/Desktop/J-G/Seedcopy.csv", usecols=['Name','Position','Salary','ProjPts'])
+players = pd.read_csv(r"Seedcopy.csv", usecols=['Name','Position','Salary','ProjPts'])
 
 availables = players.groupby(["Position", "Name", "ProjPts", "Salary"]).agg('count')
 availables = availables.reset_index()
@@ -24,14 +24,14 @@ for pos in availables.Position.unique():
     salaries[pos] = salary
     points[pos] = point
 
-# print(salaries)
-# print(points)
+print(salaries)
+print(points)
 
 # RB in flex
 pos_num_available = {
     "QB": 1,
-    "RB": 3,
-    "WR": 3,
+    "RB": 2,
+    "WR": 4,
     "TE": 1,
     "DST":1
 }
@@ -71,6 +71,6 @@ for lineup in range(1,151):
     ws.cell(row=lineup, column=colnum).value = total_score
     print(lineup, total_score)
 
-wb.save(r"playerlists/2.xlsx")
+wb.save(r"playerlists/WRflex.xlsx")
 
 
