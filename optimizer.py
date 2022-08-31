@@ -6,7 +6,7 @@ import re
 wb = openpyxl.Workbook()
 ws = wb.active
 
-players = pd.read_csv(r"/Users/jordan/Desktop/J-G/seed.csv", usecols=['Name','Position','Salary','ProjPts'])
+players = pd.read_csv(r"/Users/jordan/Desktop/J-G/Seedcopy.csv", usecols=['Name','Position','Salary','ProjPts'])
 
 availables = players.groupby(["Position", "Name", "ProjPts", "Salary"]).agg('count')
 availables = availables.reset_index()
@@ -39,7 +39,7 @@ pos_num_available = {
 salary_cap = 50000
 
 
-for lineup in range(1,51):
+for lineup in range(1,151):
     _vars = {k: LpVariable.dict(k, v, cat='Binary') for k, v in points.items()}
 
     prob = LpProblem("Fantasy", LpMaximize)
@@ -71,6 +71,6 @@ for lineup in range(1,51):
     ws.cell(row=lineup, column=colnum).value = total_score
     print(lineup, total_score)
 
-wb.save(r"playerlists/1.xlsx")
+wb.save(r"playerlists/2.xlsx")
 
 
