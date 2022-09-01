@@ -7,6 +7,9 @@ let solver = require("javascript-lp-solver"),
         cost: {"max": 21500},
         "QB" : {"max": 1,"min":1},
         "WR" : {"max": 3,"min":3},
+        "RB" : {"max": 3,"min":3},
+        "TE" : {"max": 1,"min":1},
+        "DST" : {"max": 1,"min":1},
         "Joe Flacco" : {"max": 1},
         "Jameis Winston" : {"max": 1},
         "Daniel Jones" : {"max": 1},
@@ -84,6 +87,9 @@ team = {
     fptsprpj : results.result,
     QB:"",
     WRs: [],
+    Rbs:[],
+    TE: "",
+    DST: ""
 }
 
 for (const item of arr){
