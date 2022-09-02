@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
     Players.find()
     .then((players) =>{
         console.log(players)
-        res.json(players)
+        res.render("players/index.liquid", {players})
     })
     .catch((error) =>{
         console.log(error)

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/style.css"/>
+        <title>Document</title>
+    </head>
+    <header>
+        <nav class="nav_bar">
+            <div class="nav_logo">
+                <img class="">Logo
+            </div>
+            <div class="nav_header">
+                <span>DFS Optimizer</span>
+            </div>
+            <div class="nav_options">
+                <a>Home</a>
+                <a>Lineups</a>
+                <a>User</a>
+                <a>Logout</a>
+             </div>
+            </nav>
+    </header>
+    <body>
+        <form>
+            <label class="lineup_label">How many lineups do you want to generate?</label>
+            <input class="lineup_input" placeholder="10">
+        </form>
+        <div class="optimize"><button class="optimize_button">OPTIMIZE!</button></div>
+        <table class="table">
+            <thead>
+                <th>#</th>
+                <th>Name</th>
+                <th>Team</th>
+                <th>Position</th>
+                <th>Week</th>
+                <th>Opponent</th>
+                <th>Salary</th>
+                <th>Proj. Points</th>
+                {% comment %} <th>Proj. Value</th>
+                <th>Spread</th>
+                <th>O/U</th> {% endcomment %}
+                <th>Build Around</th>
+            </thead>
+            <tbody>
+                {% for player in players %}
+                <tr>
+                    <td></td>
+                    <td>{{player.Name}}</td>
+                    <td>{{player.Team}}</td>
+                    <td>{{player.Position}}</td>
+                    <td>{{player.Week}}</td>
+                    <td>{{player.Opponent}}</td>
+                    <td>{{player.Salary}}</td>
+                    <td>{{player.ProjPts}}</td>
+                    <td></td>
+                </tr>
+                {% endfor%}
+            </tbody>
+        </table>
+    </body>
+    </html>

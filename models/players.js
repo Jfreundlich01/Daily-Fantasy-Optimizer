@@ -13,7 +13,8 @@ const playerSchema = new Schema({
   Week: Number,
   Opponent: String,
   Salary: Number,
-  ProjPts: Number
+  ProjPts: Number,
+  BuildAround: Boolean
 });
 
 // make Player model
