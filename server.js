@@ -7,6 +7,7 @@ const morgan = require("morgan"); //import morgan
 const methodOverride = require("method-override");
 const path = require("path");
 const PlayerRouter = require("./controllers/players.js")
+const LineupRouter = require("./controllers/lineups.js")
 const session = require("express-session")
 const MongoStore = require("connect-mongo"); //what connects to the mongo database
 
@@ -40,8 +41,8 @@ app.use(
 ////////////////////////////////////////////
 // Routes (Root Route)
 ////////////////////////////////////////////
-app.use("/players", PlayerRouter); //now has access to all routes in fruits.js and will put the /fruit in front of every route created within that router
-
+app.use("/players", PlayerRouter); 
+app.use("/lineups", LineupRouter); 
 
 // app.get("/", (req, res) => { //leave this one in server!!!
 //   res.send(`your server is running... you better catch it.`);
