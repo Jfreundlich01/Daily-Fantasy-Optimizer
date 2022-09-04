@@ -27,15 +27,15 @@ app.use(methodOverride("_method")); // override for put and delete requests from
 app.use(express.urlencoded({ extended: true })); // parse urlencoded request bodies
 app.use(express.static("public")); // serve files from public statically
 // middleware to setup session
+//Middleware to setup session
 app.use(
   session({
-    secret: 'SecretTunnel',
-    store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
+    secret: process.env.SECRET,
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
     saveUninitialized: true,
     resave: false,
   })
 );
-
 
 ////////////////////////////////////////////
 // Routes (Root Route)
@@ -54,10 +54,10 @@ app.get("/", (req, res) => {
 //////////////////////////////////////////////
 // Server Listener
 //////////////////////////////////////////////
-const PORT = process.env.PORT; // variable port that I'm pulling from the .env - this way you don't have to call it everytime you want to use it
-app.listen(PORT, () => {
-  console.log(`Now listening on port ${PORT}`);
-});
+const PORT = process.env.PORT;
+app.listen(process.env.PORT || 3000, function() {
+  console.log(`app listening on port ${PORT}`)
+})
 
 
 
