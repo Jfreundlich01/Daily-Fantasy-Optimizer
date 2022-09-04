@@ -1,0 +1,94 @@
+nav{
+    background-color: rgb(76, 76, 255);
+    color: white;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.nav_header{
+    font-size: 40px;
+}
+
+.nav_options a{
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    padding-right: 8px;
+}
+
+.nav_options a:hover{
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+
+body{
+    background-color: rgb(58, 58, 58);
+    position: absolute;
+    top:45px;
+}
+
+.lineup_label {
+    border: 1px solid rgb(58, 58, 58);
+    background: white;
+    position: absolute;
+    top: 55px;
+    left: 150px;
+    width: 300px;
+    height: 30px;
+}
+
+.lineup_input {
+    position: absolute;
+    top: 55px;
+    left: 475px;
+    height: 30px;
+    width: 45px;
+    border: 1px solid rgb(58, 58, 58);
+}
+
+.lineup_inpit::placeholder{
+  text-align: center;
+}
+
+.optimize{
+    position: absolute;
+    top:100px;
+    left: 150px;
+}
+
+.optimize_button{
+    font-size: 20px;
+    width: 300px;
+    height: 75px;
+    background-color: rgb(0, 255, 0)
+}
+
+table{
+    position: absolute;
+    top: 200px;
+    left:8px;
+    width: 100%;
+    border: .5px solid black;
+}
+thead{
+  background-color:rgb(76, 76, 255);
+}
+
+th{
+    padding-right: 55px;
+    border: 2px solid rgb(76, 76, 255);
+  }
+  tbody{
+    background-color: white;
+  }
+
+
+
