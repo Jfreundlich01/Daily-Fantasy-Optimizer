@@ -21,10 +21,18 @@ router.get("/", (req,res) => {
             "TE": {"max":1,"min":1},
             "DEF": {"max":1, "min":1},
         }
+        let variables = {}
         for(const player of players){
             constraints[player.Name] = {"max":1}
+            variables[player.Name + " " + player.Position] = {
+            }
+            variables[player.Name + " " + player.Position][player.Name] = 1
+            variables[player.Name + " " + player.Position].projpts = player.ProjPts
+            variables[player.Name + " " + player.Position].cost = player.Salary
+            variables[player.Name + " " + player.Position][player.Position] = 1
         }
-        res.send(constraints)
+
+        res.send(variables)
     })
     .catch((error) =>{
         console.log(error)
