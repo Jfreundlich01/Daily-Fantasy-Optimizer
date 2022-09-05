@@ -7,6 +7,7 @@ const morgan = require("morgan"); //import morgan
 const methodOverride = require("method-override");
 const path = require("path");
 const PlayerRouter = require("./controllers/players.js")
+const LineupRouter = require("./controllers/lineups.js")
 const session = require("express-session")
 const MongoStore = require("connect-mongo"); //what connects to the mongo database
 
@@ -27,21 +28,21 @@ app.use(methodOverride("_method")); // override for put and delete requests from
 app.use(express.urlencoded({ extended: true })); // parse urlencoded request bodies
 app.use(express.static("public")); // serve files from public statically
 // middleware to setup session
+//Middleware to setup session
 app.use(
   session({
-    secret: 'SecretTunnel',
-    store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
+    secret: process.env.SECRET,
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
     saveUninitialized: true,
     resave: false,
   })
 );
 
-
 ////////////////////////////////////////////
 // Routes (Root Route)
 ////////////////////////////////////////////
-app.use("/players", PlayerRouter); //now has access to all routes in fruits.js and will put the /fruit in front of every route created within that router
-
+app.use("/players", PlayerRouter); 
+app.use("/lineups", LineupRouter); 
 
 // app.get("/", (req, res) => { //leave this one in server!!!
 //   res.send(`your server is running... you better catch it.`);
@@ -54,10 +55,10 @@ app.get("/", (req, res) => {
 //////////////////////////////////////////////
 // Server Listener
 //////////////////////////////////////////////
-const PORT = process.env.PORT; // variable port that I'm pulling from the .env - this way you don't have to call it everytime you want to use it
-app.listen(PORT, () => {
-  console.log(`Now listening on port ${PORT}`);
-});
+const PORT = process.env.PORT;
+app.listen(process.env.PORT || 3000, function() {
+  console.log(`app listening on port ${PORT}`)
+})
 
 
 

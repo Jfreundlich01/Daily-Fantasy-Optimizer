@@ -8,15 +8,16 @@ const mongoose = require("mongoose");
 // Database Connection
 /////////////////////////////////////////////
 // Setup inputs for our connect function
-const DATABASE_URL = process.env.DATABASE_URL;
+const MONGODB_URI = process.env.MONGODB_URI;
 const CONFIG = {
-  useNewURLParser: true,
+  useNewUrlParser: true,
   useUnifiedTopology: true,
 };
 
+
 // const db = mongoose.connection //or could create this shortcut if called multiple times
 // Establish Connection
-mongoose.connect(DATABASE_URL, CONFIG);
+mongoose.connect(MONGODB_URI, CONFIG);
 
 // Events for when connection opens/disconnects/errors
 mongoose.connection

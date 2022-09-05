@@ -6,22 +6,18 @@ const mongoose = require("./connections.js"); //same value as if left here but n
 
 const { Schema, model } = mongoose;
 // make players schema
-const playerSchema = new Schema({
-  Name: String,
-  Team: String,
-  Position: String,
-  Week: Number,
-  Opponent: String,
-  Salary: Number,
-  ProjPts: Number,
-  FantasyDataProj: Number,
-  BuildAround: Boolean
+const lineupSchema = new Schema({
+  QB: String,
+  RB: Array,
+  WR: Array,
+  TE: String,
+  DEF: String
 });
 
 // make Player model
-const Players = model("Players", playerSchema);
+const Lineup = model("Lineup", lineupSchema);
 
 ///////////////////////////////////////////////////
 // Export Model
 ///////////////////////////////////////////////////
-module.exports = Players;
+module.exports = Lineup;
