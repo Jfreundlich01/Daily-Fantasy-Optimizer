@@ -25,10 +25,13 @@ router.get("/", (req, res) => {
       };
       let variables = {};
       let ints = {};
-      locks = ["James Conner", "Ja'Marr Chase", "Joe Flacco", "DJ Moore"]
+      const locks = ["James Conner", "Ja'Marr Chase", "Joe Flacco", "DJ Moore"]
+      const avoids = ["Quintez Cephus", "Jamal Agnew"]
       for (const player of players) {
         if(locks.includes(player.Name)){
             constraints[player.Name]= {max:1, min:1}
+        } else if(avoids.includes(player.Name)) {
+            constraints[player.Name]= {max:0}
         } else {
             constraints[player.Name] = { max: 1 };
         }
