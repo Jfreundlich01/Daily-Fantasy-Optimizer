@@ -15,7 +15,8 @@ const playerSchema = new Schema({
   Salary: Number,
   ProjPts: Number,
   FantasyDataProj: Number,
-  BuildAround: Boolean
+  BuildAround: String,
+  Avoid: String
 });
 
 // make Player model

@@ -24,11 +24,10 @@
             </nav>
     </header>
     <body>
-        <form>
+        <form action="/players?_method=PUT" method="POST">
             <label class="lineup_label">How many lineups do you want to generate?</label>
-            <input class="lineup_input" placeholder="10">
-        </form>
-        <div class="optimize"><button class="optimize_button">OPTIMIZE!</button></div>
+            <input class="lineup_input" placeholder="10" name="numOfLineups" type="number">
+        <div class="optimize"><input class="optimize_button" type="submit">OPTIMIZE!</input></div>
         <table class="table">
             <thead>
                 <th>#</th>
@@ -56,11 +55,12 @@
                     <td>{{player.Opponent}}</td>
                     <td>{{player.Salary}}</td>
                     <td>{{player.ProjPts}}</td>
-                    <td><input type="checkbox" class="checkbox"></input></td>
-                    <td><input type="checkbox" class="checkbox"></input></td>
+                    <td><input type="checkbox" class="checkbox" name="buildAround" value="{{player.Name}}"></input></td>
+                    <td><input type="checkbox" class="checkbox" name="avoid" value="{{player.Name}}"></input></td>
                 </tr>
                 {% endfor%}
             </tbody>
         </table>
+        </form>
     </body>
     </html>
