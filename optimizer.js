@@ -4,7 +4,8 @@ let solver = require("javascript-lp-solver"),
     "optimize": "projpts",
     "opType": "max",
     "constraints": {
-        cost: {"max": 21500},
+        cost: {"max" : 24000},
+        proj: {"max" : 70},
         QB : {"max": 1,"min":1},
         WR : {"max": 3,"min":3},
         "Joe Flacco" : {"max": 1},
@@ -19,42 +20,49 @@ let solver = require("javascript-lp-solver"),
         "Joe Flacco QB": {
             "Joe Flacco": 1,
             projpts: 34.05,
+            proj: 34.05,
             cost: 4800,
             "QB" : 1
         },
         "Jameis Winston QB": {
             "Jameis Winston": 1,
             projpts: 26.8,
+            proj: 26.8,
             cost: 5300,
             "QB" : 1
         },
         "Daniel Jones QB": {
             "Daniel Jones": 1,
-            projpts: 34,
+            projpts: 24,
+            proj: 24,
             cost: 5000,
             "QB" : 1
         },
         "Davante Adams WR": {
             "Davante Adams": 1,
             projpts: 18.56,
+            proj: 18.56,
             cost: 8100,
             "WR" : 1
         },
         "Deonte Harty WR": {
             "Deonte Harty": 1,
             projpts: 6.83,
+            proj: 6.83,
             cost: 3000,
             "WR" : 1
         },
         "Michael Pittman Jr. WR": {
             "Michael Pittman Jr.": 1,
             projpts: 11.08,
+            proj: 11.08,
             cost: 5500,
             "WR" : 1
         },
         "Brandin Cooks WR": {
             "Brandin Cooks": 1,
             projpts: 11.24,
+            proj: 11.24,
             cost: 6300,
             "WR" : 1
         }  
