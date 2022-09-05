@@ -9,7 +9,8 @@ const Players = require("../models/players.js");
 /////////////////////////////////////////
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/:numOfLineups", (req, res) => {
+  const numOfLineups = req.params.numOfLineups
   Players.find()
     .then((players) => {
       console.log(players);
@@ -58,7 +59,7 @@ router.get("/", (req, res) => {
       results = solver.Solve(model);
       let projmax = results.result
       
-      for(let i = 0; i < 25 ; i++){
+      for(let i = 0; i < numOfLineups ; i++){
         constraints.proj = {"max" : projmax - .001}
         let solver = require("javascript-lp-solver"),
         results,
@@ -116,7 +117,7 @@ router.get("/", (req, res) => {
         }
         lineups.push(lineup)
       }
-      res.send(lineups);
+      res.render("players/show.liquid", {lineups});
     })
     .catch((error) => {
       console.log(error);

@@ -21,6 +21,17 @@ router.get("/", (req, res) => {
     })
   });
 
+router.put("/", (req, res) =>{
+    console.log(req.body)
+    // for (let i = 0; i<req.body.buildAround.length; i++) {
+    //     Players.findOneAndUpdate({Name:req.body.buildAround[i]},{$set:{BuildAround : "true"}})
+    // }
+    // for (let i = 0; i<req.body.avoid.length; i++) {
+    //     Players.findOneAndUpdate({Name:req.body.avoid[i]},{$set:{Avoid : "true"}})
+    // }
+    res.redirect(`lineups/${req.body.numOfLineups}`)
+})
+
 //////////////////////////////////////////
 // Export the Router
 //////////////////////////////////////////
