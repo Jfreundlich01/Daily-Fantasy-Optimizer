@@ -25,8 +25,9 @@ router.get("/", (req, res) => {
       };
       let variables = {};
       let ints = {};
+      locks = ["James Conner", "Ja'Marr Chase", "Joe Flacco", "DJ Moore"]
       for (const player of players) {
-        if(player.Name === "Davante Adams"){
+        if(locks.includes(player.Name)){
             constraints[player.Name]= {max:1, min:1}
         } else {
             constraints[player.Name] = { max: 1 };
@@ -39,6 +40,8 @@ router.get("/", (req, res) => {
         variables[player.Name + " " + player.Position][player.Position] = 1;
         ints[player.Name + " " + player.Position] = 1;
       }
+
+      //D.J Moore, James Connor, Jamar Chase, Joe Flacco 
 
       let solver = require("javascript-lp-solver"),
         results,
