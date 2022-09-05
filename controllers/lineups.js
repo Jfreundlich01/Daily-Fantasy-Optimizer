@@ -116,8 +116,6 @@ router.get("/", (req, res) => {
         }
         lineups.push(lineup)
       }
-      
-
       res.send(lineups);
     })
     .catch((error) => {
