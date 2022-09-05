@@ -14,6 +14,7 @@ const playerSchema = new Schema({
   Opponent: String,
   Salary: Number,
   ProjPts: Number,
+  FantasyDataProj: Number,
   BuildAround: Boolean
 });
 

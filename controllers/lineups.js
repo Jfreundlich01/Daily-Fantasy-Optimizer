@@ -25,8 +25,8 @@ router.get("/", (req, res) => {
       };
       let variables = {};
       let ints = {};
-      const locks = ["James Conner", "Ja'Marr Chase", "Joe Flacco", "DJ Moore"]
-      const avoids = ["Quintez Cephus", "Jamal Agnew"]
+      const locks = []
+      const avoids = []
       for (const player of players) {
         if(locks.includes(player.Name)){
             constraints[player.Name]= {max:1, min:1}
@@ -37,8 +37,8 @@ router.get("/", (req, res) => {
         }
         variables[player.Name + " " + player.Position] = {};
         variables[player.Name + " " + player.Position][player.Name] = 1;
-        variables[player.Name + " " + player.Position].projpts = player.ProjPts;
-        variables[player.Name + " " + player.Position].proj = player.ProjPts;
+        variables[player.Name + " " + player.Position].projpts = player.FantasyDataProj;
+        variables[player.Name + " " + player.Position].proj = player.FantasyDataProj;
         variables[player.Name + " " + player.Position].cost = player.Salary;
         variables[player.Name + " " + player.Position][player.Position] = 1;
         ints[player.Name + " " + player.Position] = 1;
