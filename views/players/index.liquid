@@ -43,6 +43,7 @@
                 <th>Spread</th>
                 <th>O/U</th> {% endcomment %}
                 <th>Build Around</th>
+                <th>Avoid</th>
             </thead>
             <tbody>
                 {% for player in players %}
@@ -55,7 +56,8 @@
                     <td>{{player.Opponent}}</td>
                     <td>{{player.Salary}}</td>
                     <td>{{player.ProjPts}}</td>
-                    <td></td>
+                    <td><input type="checkbox" class="checkbox"></input></td>
+                    <td><input type="checkbox" class="checkbox"></input></td>
                 </tr>
                 {% endfor%}
             </tbody>
