@@ -36,13 +36,13 @@ router.get("/:numOfLineups", (req, res) => {
         } else {
             constraints[player.Name] = { max: 1 };
         }
-        variables[player.Name + " " + player.Position] = {};
-        variables[player.Name + " " + player.Position][player.Name] = 1;
-        variables[player.Name + " " + player.Position].projpts = player.FantasyDataProj;
-        variables[player.Name + " " + player.Position].proj = player.FantasyDataProj;
-        variables[player.Name + " " + player.Position].cost = player.Salary;
-        variables[player.Name + " " + player.Position][player.Position] = 1;
-        ints[player.Name + " " + player.Position] = 1;
+        variables[player.Name + " " + player.Team + " " + player.FantasyDataProj + " " + player.Position] = {};
+        variables[player.Name + " " + player.Team + " " + player.FantasyDataProj + " " + player.Position][player.Name] = 1;
+        variables[player.Name + " " + player.Team + " " + player.FantasyDataProj + " " + player.Position].projpts = player.FantasyDataProj;
+        variables[player.Name + " " + player.Team + " " + player.FantasyDataProj + " " + player.Position].proj = player.FantasyDataProj;
+        variables[player.Name + " " + player.Team + " " + player.FantasyDataProj + " " + player.Position].cost = player.Salary;
+        variables[player.Name + " " + player.Team + " " + player.FantasyDataProj + " " + player.Position][player.Position] = 1;
+        ints[player.Name + " " + player.Team + " " + player.FantasyDataProj + " " + player.Position] = 1;
       }
 
       //D.J Moore, James Connor, Jamar Chase, Joe Flacco 
@@ -77,11 +77,23 @@ router.get("/:numOfLineups", (req, res) => {
         let lineup = {
             id : id,
             projpts: results.result,
-            QB: "",
+            QB: {
+              name: "",
+              team: "",
+              fpts: 0
+            },
             RBS: [],
             WRS: [],
-            TE: "",
-            DST: ""
+            TE: {
+              name: "",
+              team: "",
+              fpts: 0
+            },
+            DST: {
+              name: "",
+              team: "",
+              fpts: 0
+            }
         }
 
         function getObjKey(obj, value) {
@@ -92,25 +104,42 @@ router.get("/:numOfLineups", (req, res) => {
         for (const item of arr){
             itemarr = item.split(' ')
             if(itemarr.includes("QB")){
-                itemarr.pop()
-                string = itemarr.join(" ")
-                lineup.QB = string
+              string = itemarr.slice(0, -3).join(' ');
+              lineup.QB.name = string
+              lineup.QB.team = itemarr[itemarr.length - 3]
+              lineup.QB.fpts = itemarr[itemarr.length - 2]
             } else if(itemarr.includes("WR")){
-                itemarr.pop()
-                string = itemarr.join(" ")
-                lineup.WRS.push(string)
+                let wr = {
+                  name: "",
+                  team: "",
+                  fpts: 0
+                }
+                string = itemarr.slice(0, -3).join(' ');
+                wr.name = string
+                wr.team = itemarr[itemarr.length - 3]
+                wr.fpts = itemarr[itemarr.length - 2]
+                lineup.WRS.push(wr)
             } else if(itemarr.includes("RB")){
-                itemarr.pop()
-                string = itemarr.join(" ")
-                lineup.RBS.push(string)
+              let rb = {
+                name: "",
+                team: "",
+                fpts: 0
+              }
+              string = itemarr.slice(0, -3).join(' ');
+              rb.name = string
+              rb.team = itemarr[itemarr.length - 3]
+              rb.fpts = itemarr[itemarr.length - 2]
+              lineup.RBS.push(rb)
             }  else if(itemarr.includes("TE")){
-                itemarr.pop()
-                string = itemarr.join(" ")
-                lineup.TE = string
+              string = itemarr.slice(0, -3).join(' ');
+              lineup.TE.name = string
+              lineup.TE.team = itemarr[itemarr.length - 3]
+              lineup.TE.fpts = itemarr[itemarr.length - 2]
             } else if(itemarr.includes("DST")){
-                itemarr.pop()
-                string = itemarr.join(" ")
-                lineup.DST = string
+              string = itemarr.slice(0, -3).join(' ');
+              lineup.DST.name = string
+              lineup.DST.team = itemarr[itemarr.length - 3]
+              lineup.DST.fpts = itemarr[itemarr.length - 2]
             }
             id = id + 1
 

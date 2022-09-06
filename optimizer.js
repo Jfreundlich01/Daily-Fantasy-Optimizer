@@ -8,7 +8,7 @@ let solver = require("javascript-lp-solver"),
         proj: {"max" : 70},
         QB : {"max": 1,"min":1},
         WR : {"max": 3,"min":3},
-        "Joe Flacco" : {"max": 1},
+        "Joe Flacco" : {"max": 1,"min":1},
         "Jameis Winston" : {"max": 1},
         "Daniel Jones" : {"max": 1},
         "Davante Adams" : {"max": 1},
@@ -17,7 +17,7 @@ let solver = require("javascript-lp-solver"),
         "Brandin Cooks" : {"max": 1}
     },
     "variables": {
-        "Joe Flacco QB": {
+        "Joe Flacco NYJ 34.05 QB": {
             "Joe Flacco": 1,
             projpts: 34.05,
             proj: 34.05,
@@ -68,7 +68,7 @@ let solver = require("javascript-lp-solver"),
         }  
     },
     "ints": {
-         "Joe Flacco QB": 1,
+         "Joe Flacco NYJ 34.05 QB": 1,
          "Jameis Winston QB": 1,
          "Daniel Jones QB": 1,
          "Davante Adams WR": 1,
@@ -89,16 +89,21 @@ const arr = getObjKey(results,1)
 
 team = {
     fptsprpj : results.result,
-    QB:"",
+    QB:{
+       name: "",
+       team: "",
+       fpts: 0 
+    },
     WRs: [],
 }
 
 for (const item of arr){
     itemarr = item.split(' ')
     if(itemarr.includes("QB")){
-        itemarr.pop()
-        string = itemarr.join(" ")
-        team.QB = string
+        string = itemarr.slice(0, -3).join(' ');
+        team.QB.name = string
+        team.QB.team = itemarr[itemarr.length - 3]
+        team.QB.fpts = itemarr[itemarr.length - 2]
     } else if(itemarr.includes("WR")){
         itemarr.pop()
         string = itemarr.join(" ")
